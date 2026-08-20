@@ -1,0 +1,4 @@
+interface:
+  display_name: "要件確認"
+  short_description: "重要な不明点を一問ずつ確認"
+  default_prompt: "$grilling を使って、実装方針を左右する不明点を一問ずつ確認し、合意事項と次の作業を整理して。"
