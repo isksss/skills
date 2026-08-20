@@ -7,6 +7,8 @@ description: コード、設定、ドキュメント、実行結果を根拠に�
 
 repo-tracked file を変更せず、事実、推測、未確認事項、推奨方針を分ける。
 
+実装が必要な場合は、結果を `plan` に渡す。
+
 ## Workflow
 
 `references/workflow.md` を読む。

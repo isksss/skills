@@ -13,11 +13,24 @@
 |---|---|---|
 | `branch` | 規約に沿う branch の作成 | branch 作成を依頼されたとき |
 | `commit` | 安全な対象だけを commit | commit を明示的に依頼されたとき |
-| `implement` | 最小変更で実装・検証 | 実装・設定・文書の変更時 |
+| `plan` | 実装内容と検証方針の計画 | 変更を実装する前 |
+| `implement` | 計画に沿った最小変更の実装 | plan 完了後 |
+| `test` | 検証コマンドの実行 | implement 完了後 |
 | `research` | 事実確認と方針整理 | 調査・診断・実装前の確認時 |
 | `review` | 差分のリスク確認 | コード・変更内容のレビュー時 |
 | `grilling` | 要件・方針の確認 | 実装を左右する不明点があるとき |
 | `merge-request` | GitHub PR / GitLab MR の作成 | PR/MR 作成を明示的に依頼されたとき |
+
+## 開発フロー
+
+標準フローは `research / grilling → plan → implement → test → review` です。小さな変更でも工程を省略せず、各工程を簡略化します。
+
+- `plan`: 対象ファイル、変更手順、テストコードの要否、検証コマンド、リスクを決める
+- `implement`: plan の範囲だけを編集する。テストコードの追加・修正もここで行う
+- `test`: lint、typecheck、test、build などを実行し、結果と未検証範囲を記録する
+- `review`: plan、差分、test 結果を読み取り、不具合・回帰・セキュリティ・互換性を確認する
+
+test の失敗は `implement → test`、review の指摘は `implement → test → review` に戻します。計画変更が必要な場合は `plan` からやり直します。
 
 ## 導入
 
