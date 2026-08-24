@@ -1,13 +1,9 @@
-# dotagents
+# skills
 
-`~/.agents` に配置して使う個人用 agent 設定と skills のリポジトリです。
+`npx skills add` で導入する自作 skills のリポジトリです。
+共通の agent 指示は `~/dotfiles/.agents/AGENTS.md` で管理します。
 
-## 構成
-
-- `AGENTS.md`: 共通の agent 指示
-- `skills/`: 自作スキルと `npx skills add -g` で導入した外部スキル
-
-## 汎用 skills
+## 自作 skills
 
 | Skill | 用途 | 利用契機 |
 |---|---|---|
@@ -21,46 +17,36 @@
 | `grilling` | 要件・方針の確認 | 実装を左右する不明点があるとき |
 | `merge-request` | GitHub PR / GitLab MR の作成 | PR/MR 作成を明示的に依頼されたとき |
 
-## 開発フロー
-
-標準フローは `research / grilling → plan → implement → test → review` です。小さな変更でも工程を省略せず、各工程を簡略化します。
-
-- `plan`: 対象ファイル、変更手順、テストコードの要否、検証コマンド、リスクを決める
-- `implement`: plan の範囲だけを編集する。テストコードの追加・修正もここで行う
-- `test`: lint、typecheck、test、build などを実行し、結果と未検証範囲を記録する
-- `review`: plan、差分、test 結果を読み取り、不具合・回帰・セキュリティ・互換性を確認する
-
-test の失敗は `implement → test`、review の指摘は `implement → test → review` に戻します。計画変更が必要な場合は `plan` からやり直します。
-
 ## 導入
 
-既存の `~/.agents` を退避または削除したうえで clone します。
-
 ```sh
-mv ~/.agents ~/.agents.backup
-git clone <dotagents-repository-url> ~/.agents
-```
-
-このリポジトリを `~/.agents` 以外へ clone する場合、global skill の配置先と一致しないため、外部スキル管理の正本にはなりません。
-
-## 自作スキル
-
-自作スキルは `skills/<name>/SKILL.md` を正本とします。変更後は frontmatter、参照ファイル、対象 agent での利用可否を確認します。
-
-## 外部スキル
-
-外部スキルは導入元を確認し、内容をレビューしてから global install します。
-
-```sh
-npx skills add -g <owner>/<repo> --skill <name>
+npx skills add -g isksss/skills --all
 npx skills list -g
 npx skills update -g
 ```
 
-`npx skills add -g` と `npx skills update -g` は `~/.agents/skills/` を更新します。更新後は次を確認してからコミットします。
+特定の skill だけ導入する場合:
 
-- `SKILL.md` が想定した内容か
-- 外部参照、シェル実行、認証情報の扱いに問題がないか
-- 自作スキルと名前が衝突していないか
+```sh
+npx skills add -g isksss/skills --skill plan
+```
 
-外部スキルは信頼できるソースに限定し、導入したコードは agent 権限で実行され得ることを前提に扱います。
+## 外部 skills
+
+外部 skills はこのリポジトリにコピーせず、導入元から直接追加します。
+
+```sh
+npx skills add -g anomalyco/opencode --skill effect rtl-aware-development
+npx skills add -g herdrdev/herdr --skill herdr herdr-pre-release-audit herdr-throwaway-repro triage
+```
+
+導入後は `npx skills list -g` で source と導入先を確認します。skills は agent 権限で実行され得るため、
+外部参照、シェル実行、認証情報の扱いを確認してから使用します。
+
+`graphify-labs/graphify` は現在、Skills CLI が要求する `SKILL.md` ではなく生成用の
+`graphify/skill-agents.md` を配布しているため、`npx skills add` の直接取得に対応していません。
+upstream が対応した後は次で導入できます。
+
+```sh
+npx skills add -g graphify-labs/graphify --skill graphify
+```
