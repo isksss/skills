@@ -5,7 +5,7 @@ description: 実装済み変更に対する検証コマンドを実行し、結�
 
 # test
 
-repo-tracked file を変更せず、plan に定めた検証を実行して review に引き渡す。
+repo-tracked file を変更せず、plan またはユーザーが指定した検証を実行して、結果と残リスクを `review` へ引き渡す。
 
 ## Workflow
 
@@ -14,6 +14,7 @@ repo-tracked file を変更せず、plan に定めた検証を実行して revie
 ## Output
 
 - 実行したコマンドと結果
-- 失敗したコマンドの原因分類
+- 予期しない Git 状態や外部状態の変更
+- 失敗したコマンドの原因分類と戻り先
 - 未実行の検証と理由
 - review が判断に使う残リスク

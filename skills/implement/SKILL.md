@@ -5,7 +5,7 @@ description: planで合意した方針に沿って、既存規約に合わせた
 
 # implement
 
-plan の範囲だけを編集し、完了後に `test` へ引き渡す。テスト、lint、typecheck、build は実行しない。
+plan の範囲だけを編集し、既存差分を保持して、完了後に変更内容と未実行の検証を `test` へ引き渡す。テスト、lint、typecheck、build は実行しない。
 
 ## Workflow
 

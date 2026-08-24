@@ -5,7 +5,7 @@ description: 現在 branch の差分と履歴を確認し、GitHub PR または 
 
 # merge-request
 
-ホスティングと派生元を確認し、既存テンプレートに沿って作成する。
+ユーザーの明示的な依頼がある場合だけ、対象 repository、base、head を確認して GitHub PR または GitLab MR を作成する。push/create 前に安全性を確認し、確認できない場合は停止して理由を報告する。
 
 ## Workflow
 

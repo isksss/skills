@@ -1,4 +1,4 @@
 interface:
   display_name: "スキル自己改善"
   short_description: "会話から汎用的な改善候補を抽出し承認後に反映"
-  default_prompt: "$self-improvement を使って、今回の会話から再利用可能な改善候補を抽出し、根拠と最小差分案を提示して。承認前はファイルを変更しないで。"
+  default_prompt: "$self-improvement を使って、再利用可能な改善候補を根拠と最小差分案つきで候補単位に提示して。承認前は変更せず、承認後は標準フローで承認対象だけを反映して。"

@@ -1,4 +1,4 @@
 interface:
   display_name: "実装"
   short_description: "計画に基づく最小実装"
-  default_prompt: "$implement を使って、plan に基づき、既存規約に沿って最小実装して。検証コマンドは実行せず、完了後に test へ引き渡して。"
+  default_prompt: "$implement を使って、plan の範囲だけを既存規約に沿って最小実装して。既存差分を保持し、検証コマンドは実行せず、変更内容と未実行の検証を test へ渡して。"

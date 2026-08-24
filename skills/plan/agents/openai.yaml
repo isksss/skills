@@ -1,4 +1,4 @@
 interface:
   display_name: "計画"
   short_description: "実装可能な変更計画の作成"
-  default_prompt: "$plan を使って、要件と既存コードを確認し、implement と test が追加判断なしで進められる計画を作って。"
+  default_prompt: "$plan を使って、要件、既存差分、対象、対象外、実装手順、検証、リスクを整理して。情報不足は research、判断が必要な不明点は grilling に戻して。"

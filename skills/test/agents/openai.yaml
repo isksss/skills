@@ -1,4 +1,4 @@
 interface:
   display_name: "テスト"
   short_description: "検証コマンドの実行と結果報告"
-  default_prompt: "$test を使って、plan に沿った検証コマンドを実行し、結果・失敗原因・未検証範囲を review 向けに整理して。"
+  default_prompt: "$test を使って、plan またはユーザー指定の検証を実行して。実行前に副作用と timeout を確認し、結果、失敗原因、未検証範囲、残リスクを review 向けに整理して。"

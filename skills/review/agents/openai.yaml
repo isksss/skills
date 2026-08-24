@@ -1,4 +1,4 @@
 interface:
   display_name: "レビュー"
   short_description: "差分レビューと検証観点整理"
-  default_prompt: "$review を使って、plan・test結果・現在の差分を確認し、バグ・回帰・検証不足を重大度順にレビューして。検証コマンドは実行しないで。"
+  default_prompt: "$review を使って、staged/unstaged/untracked の差分を確認し、plan と test 結果があれば照合して。findings first で重大度順に指摘し、検証コマンドは実行しないで。"

@@ -1,4 +1,4 @@
 interface:
   display_name: "コミット"
   short_description: "Git差分を確認しprefix付き日本語でコミット"
-  default_prompt: "$commit を使って現在の変更を確認し、適切な prefix 付き日本語コミットメッセージでコミットして。"
+  default_prompt: "$commit を使って、明示的に承認された対象だけを staged/unstaged の差分を保護しながらコミットして。秘密情報、生成物、無関係差分を除外し、hook 失敗時は retry や --no-verify を使わないで。"
