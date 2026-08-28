@@ -1,4 +1,4 @@
 interface:
   display_name: "計画"
   short_description: "実装可能な変更計画の作成"
-  default_prompt: "$plan を使って、要件、既存差分、対象、対象外、実装手順、検証、リスクを整理して。情報不足は research、判断が必要な不明点は grilling に戻して。"
+  default_prompt: "$plan を使って Tech Lead の設計書として計画して。設計判断は採用案を一つに確定し、変更対象を独立して実装・テストできる項目に分け、対象ファイル、振る舞い、エラー処理、互換性、テスト観点、完了条件、対象外、実装契約、検証、残リスクを明記して。実装に影響する未確認事項が残る場合は確定せず、事実不足は research、判断は grilling に戻して。"
